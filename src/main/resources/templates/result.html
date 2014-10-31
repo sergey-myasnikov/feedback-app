@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Success - Feedback App</title>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="icon" type="image/png" href="/favicon.png" />
+	<link rel="stylesheet" type="text/css" href="/css/styles.css" />
+
+</head>
+<body class="base">
+
+	<div class="left">
+		<div>
+			<div>
+				<a href="/main">
+					<input type="button" class="btn" value="Home"/>
+				</a>
+			</div>
+			<div>
+				<a href="/feedback">
+					<input type="button" class="btn" value="Post a Feedback"/>
+				</a>
+			</div>
+			<div>
+				<a href="/admin">
+					<input type="button" class="btn" value="View all Feedbacks"/>
+				</a>
+			</div>
+			<div th:if="${li}">
+   				<a href="/logout">
+					<input type="button" class="btn" value="Logout"/>
+				</a>
+			</div>
+			<div th:unless="${li}">
+   				<a href="/login">
+					<input type="button" class="btn" value="Login"/>
+				</a>			
+			</div>	
+		</div>
+	</div>
+	
+	<div class="left">
+		<div>
+			<h1>Feedback successfully sent!</h1>
+		</div>
+		
+		<div class="feedbackresult">
+			<br/>
+			<p th:text="'Hi ' + ${feedback.name} + ','"/>
+			<br/>
+    		<p th:text="'Thank you for the feedback. It was assigned an ID ' + ${feedback.id}" />
+    		<p th:text="'We\'ll reply you asap to ' + ${feedback.email}" />
+    		<p id="fb" th:text="${feedback.feedback}" /><br/>
+    		<p>Feedback App</p>
+    	</div>
+    
+    </div>
+
+
+</body>
+</html>

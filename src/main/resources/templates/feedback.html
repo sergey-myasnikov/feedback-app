@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Post a Feedback - Feedback App</title>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="icon" type="image/png" href="/favicon.png" />
+	<link rel="stylesheet" type="text/css" href="/css/styles.css" />
+
+</head>
+<body class="base">
+
+	<div class="left">
+		<div>
+			<div>
+				<a href="/main">
+					<input type="button" class="btn" value="Home"/>
+				</a>
+			</div>
+			<div>
+				<a href="/feedback">
+					<input type="button" class="btn" value="Post a Feedback"/>
+				</a>
+			</div>
+			<div>
+				<a href="/admin">
+					<input type="button" class="btn" value="View all Feedbacks"/>
+				</a>
+			</div>		
+			<div th:if="${li}">
+   				<a href="/logout">
+					<input type="button" class="btn" value="Logout"/>
+				</a>
+			</div>
+			<div th:unless="${li}">
+   				<a href="/login">
+					<input type="button" class="btn" value="Login"/>
+				</a>			
+			</div>			
+		</div>
+	</div>
+	
+	<div class="left">
+		<div>
+			<h1>Post a Feedback</h1>
+		</div>
+		
+		<div id="form">
+			<form th:action="@{/feedback}" th:object="${feedback}" method="post">
+				<fieldset>
+				
+					<label for="name">Name</label>
+					<input type="text" name="name" th:field="*{name}" th:value="li."/>
+				
+					<label for="email">E-mail</label>
+					<input type="text" name="email" th:field="*{email}" />
+				
+					<label for="feedback">Feedback</label>
+					<textarea name="feedback" rows="4" cols="30" th:field="*{feedback}"></textarea>
+				
+					<label for="Password">I agree with spam</label> 
+					<input name="isSpamAgreed" type="checkbox" th:field="*{isSpamAgreed}" />
+
+					<div id="formButtons">
+						<input type="submit" class="btnc" value="Submit" />
+						<input type="reset"  class="btnc" value="Reset" />
+					</div>
+				</fieldset>
+			</form>
+		</div>
+	</div>
+
+</body>
+</html>

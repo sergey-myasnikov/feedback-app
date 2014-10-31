@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>All Feedbacks - Feedback App</title>
+	
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="icon" type="image/png" href="/favicon.png" />
+	<link rel="stylesheet" type="text/css" href="/css/styles.css" />
+
+</head>
+
+<body class="base">
+
+	<div class="left">
+		<div>
+			<div>
+				<a href="/main">
+					<input type="button" class="btn" value="Home"/>
+				</a>
+			</div>
+			<div>
+				<a href="/feedback">
+					<input type="button" class="btn" value="Post a Feedback"/>
+				</a>
+			</div>
+			<div>
+				<a href="/admin">
+					<input type="button" class="btn" value="View all Feedbacks"/>
+				</a>
+			</div>
+			
+			<div th:if="${li}">
+   				<a href="/logout">
+					<input type="button" class="btn" value="Logout"/>
+				</a>
+			</div>
+			<div th:unless="${li}">
+   				<a href="/login">
+					<input type="button" class="btn" value="Login"/>
+				</a>			
+			</div>
+		</div>
+	</div>
+
+	<div class="left">
+		<div>
+			<h1>All Feedbacks</h1>
+		</div>
+		<div>		
+			<table id="table">		
+				<tr>
+  					<th id="id">ID</th>
+  					<th id="name">User Name</th>
+  					<th id="email">E-mail</th>
+  					<th id="feedback">Feedback</th>
+  					<th id="spam">Spam</th>
+  					<th id="delete">&#x2716;</th>
+				</tr>
+
+				<th:block th:each="test : ${testList}">
+					<tr>
+						<td id="id" th:text="${test.id}">id</td>
+    					<td id="name" th:text="${test.name}">name</td>
+    					<td id="email" th:text="${test.email}">e-mail</td>
+    					<td id="feedback" th:text="${test.feedback}">feedback</td>
+    					<td id="spam">
+    						<input type="checkbox" disabled="disabled" th:checked="${test.isSpamAgreed}"/>
+    					</td>
+ 					
+    					<td id="delete">
+							<form th:action="@{/admin}" method="POST">
+      							<input hidden="true" id="hidden" name="id" th:value="${test.id}" />
+      							<input 
+      								type="submit" 
+      								class="btna"
+      								value="Delete" 
+      								onClick="return confirm('You are about to delete a Feedback.\nAre you sure?')"/>
+							</form>
+    					</td>
+					</tr>
+				</th:block>
+			</table>
+		</div>
+	</div>
+</body>
+</html>

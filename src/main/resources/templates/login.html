@@ -1,0 +1,72 @@
+<html xmlns:th="http://www.thymeleaf.org" xmlns:tiles="http://www.thymeleaf.org">
+  <head>
+    <title tiles:fragment="title">Login - Feedback App</title>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="icon" type="image/png" href="/favicon.png" />
+	<link rel="stylesheet" type="text/css" href="/css/styles.css" />
+    
+  </head>
+  <body class="base">
+  
+	<div class="left">
+		<div>
+			<div>
+				<a href="/main">
+					<input type="button" class="btn" value="Home"/>
+				</a>
+			</div>
+			<div>
+				<a href="/feedback">
+					<input type="button" class="btn" value="Post a Feedback"/>
+				</a>
+			</div>
+			<div>
+				<a href="/admin">
+					<input type="button" class="btn" value="View all Feedbacks"/>
+				</a>
+			</div>			
+			<div th:if="${li}">
+   				<a href="/logout">
+					<input type="button" class="btn" value="Logout"/>
+				</a>
+			</div>
+			<div th:unless="${li}">
+				<a href="/login">
+					<input type="button" class="btn" value="Login"/>
+				</a>			
+			</div>			
+		</div>
+	</div>
+	
+	<div class="left">
+		<div>
+			<h1>Please login</h1>
+		</div>
+  
+    	<div tiles:fragment="content">
+         	<img src="Key.png" />  
+        	<form name="f" id="form" th:action="@{/login}" method="post">             
+            	<fieldset>
+                	<label for="username">Username</label>
+                	<input type="text" id="username" name="username"/>
+                	      
+                	<label for="password">Password</label>
+                	<input type="password" name="password" />
+            	
+            	    <div th:if="${param.error}" class="alert alert-error">    
+                    	<p>Invalid username and password.</p>
+                	</div>
+                	<div th:if="${param.logout}" class="alert alert-success"> 
+                    	<p>You have been logged out.</p>
+                	</div>
+            	
+                	<div id="formButtons">
+                    	<button type="submit" class="btnc">Log in</button>
+                	</div>
+            	</fieldset>
+        	</form>
+    	</div>
+    </div>
+  </body>
+</html>
