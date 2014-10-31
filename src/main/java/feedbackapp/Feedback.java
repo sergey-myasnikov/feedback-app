@@ -3,7 +3,6 @@ package feedbackapp;
 /**
  * Feedback representation class with fields and accessors for 
  * the id, name, e-mail, feedback content and spam agreement data
- * @author MYASNSE1
  *
  */
 public class Feedback {

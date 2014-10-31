@@ -9,7 +9,6 @@ import org.springframework.context.annotation.ComponentScan;
  * Spring supports embedding the Tomcat servlet 
  * container as the HTTP runtime, instead of 
  * deploying to an external instance.
- * @author Sergey Myasnikov
  *
  */
 @ComponentScan

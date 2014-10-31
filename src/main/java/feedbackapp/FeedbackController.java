@@ -10,7 +10,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.*;
 
-
+/**
+ * Spring controller class
+ *
+ */
 @Controller
 public class FeedbackController {
 	
