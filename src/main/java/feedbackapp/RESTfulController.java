@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class RESTfulController {
 	
-	private FeedbackRepository repository = new FeedbackRepository();
+	private FeedbackRepository repository = FeedbackRepository.getInstance();
 	
     @RequestMapping(value="/api", method = RequestMethod.GET)
     public Feedback helthCheck() {

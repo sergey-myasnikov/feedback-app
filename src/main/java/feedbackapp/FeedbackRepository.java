@@ -9,11 +9,20 @@ import java.util.*;
  */
 public class FeedbackRepository {
 	
+	private static FeedbackRepository instance = null;
+	
 	private List<Feedback> feedbacks;
 	private long count = 1;
 	
 
-	public FeedbackRepository() {
+	public static FeedbackRepository getInstance() {
+		if(instance == null) {
+			instance = new FeedbackRepository();
+		}
+		return instance;
+	}
+	
+	protected FeedbackRepository() {
 		this.feedbacks = new ArrayList<Feedback>();
 	}
 	

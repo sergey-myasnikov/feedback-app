@@ -17,7 +17,7 @@ import java.util.*;
 @Controller
 public class FeedbackController {
 	
-	private FeedbackRepository repository = new FeedbackRepository();
+	private FeedbackRepository repository = FeedbackRepository.getInstance();
 
     @RequestMapping(value="/main")
     public String mainPage(Model model) {
