@@ -3,12 +3,15 @@ package feedbackapp;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.*;
+
+import javax.validation.Valid;
 
 /**
  * Spring controller class
@@ -39,8 +42,11 @@ public class FeedbackController {
     }
 
     @RequestMapping(value="/feedback", method = RequestMethod.POST)
-    public String feedbackSubmit(@ModelAttribute Feedback feedback, Model model) {
+    public String feedbackSubmit(@ ModelAttribute @Valid Feedback feedback, BindingResult bindingResult, Model model) {
     	model.addAttribute("li", isLoggedIn());
+        if (bindingResult.hasErrors()) {
+            return "feedback";
+        }
         repository.put(feedback);
         return "result";
     }
