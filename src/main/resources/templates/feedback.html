@@ -52,22 +52,22 @@
 					<label for="name">Name</label>
 					<input type="text" name="name" th:field="*{name}" th:value="li."/>
 					
-					<p th:if="${#fields.hasErrors('name')}">Please enter your name.</p>
+					<p th:if="${#fields.hasErrors('name')}" class="alert alert-error alert-fb">Please enter your name.</p>
 				
 					<label for="email">E-mail</label>
 					<input type="text" name="email" th:field="*{email}" />
-					<p th:if="${#fields.hasErrors('email')}">Please enter a valid E-mail.</p>
+					<p th:if="${#fields.hasErrors('email')}" class="alert alert-error alert-fb">Please enter a valid E-mail.</p>
 				
 					<label for="feedback">Feedback</label>
 					<textarea name="feedback" rows="4" cols="30" th:field="*{feedback}"></textarea>
-					<p th:if="${#fields.hasErrors('feedback')}">Feedback cannot be empty or greater then 2000 symbols.</p>
+					<p th:if="${#fields.hasErrors('feedback')}" class="alert alert-error alert-fb">Feedback cannot be empty or greater then 2000 symbols.</p>
 				
 					<label for="Password">I agree with spam</label> 
 					<input name="isSpamAgreed" type="checkbox" th:field="*{isSpamAgreed}" />
 
-					<div id="formButtons">
-						<input type="submit" class="btnc" value="Submit" />
-						<input type="reset"  class="btnc" value="Reset" />
+					<div>
+						<input type="submit" class="btn btnf" value="Submit" />
+						<input type="reset"  class="btn btnf" value="Reset" />
 					</div>
 				</fieldset>
 			</form>

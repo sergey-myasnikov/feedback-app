@@ -54,15 +54,15 @@
                 	<label for="password">Password</label>
                 	<input type="password" name="password" />
             	
-            	    <div th:if="${param.error}" class="alert alert-error">    
+            	    <div th:if="${param.error}" class="alert alert-error alert-login">    
                     	<p>Invalid username and password.</p>
                 	</div>
-                	<div th:if="${param.logout}" class="alert alert-success"> 
+                	<div th:if="${param.logout}" class="alert alert-success alert-login"> 
                     	<p>You have been logged out.</p>
                 	</div>
             	
                 	<div id="formButtons">
-                    	<button type="submit" class="btnc">Log in</button>
+                    	<button type="submit" class="btn btnf">Log in</button>
                 	</div>
             	</fieldset>
         	</form>
