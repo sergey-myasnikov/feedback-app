@@ -4,3 +4,7 @@ bin/
 .settings/
 .classpath
 .project
+integration-test/results-output/
+integration-test/target/
+integration-test/bin/
+integration-test/*.log

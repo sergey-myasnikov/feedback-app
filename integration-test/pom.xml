@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.myasnikov</groupId>
+    <artifactId>feedback-app-test</artifactId>
+    <name>Feedback App Test</name>
+    <version>0.1.0</version>
+
+    <!-- dependencyManagement>
+        <dependencies>
+        	<dependency>
+            	<groupId>org.jboss.arquillian</groupId>
+            	<artifactId>arquillian-bom</artifactId>
+            	<version>1.1.5.Final</version>
+            	<type>pom</type>
+            	<scope>import</scope>
+        	</dependency>
+        	
+        	<dependency>
+                <groupId>org.jboss.arquillian.extension</groupId>
+                <artifactId>arquillian-drone-bom</artifactId>
+                <version>1.3.1.Final</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement-->
+
+    <dependencies>  	
+    	<dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.11</version>
+            <scope>test</scope>
+        </dependency>
+        
+        <!-- Arquillian JUnit standalone -->
+		<!--dependency>
+   			<groupId>org.jboss.arquillian.junit</groupId>
+   			<artifactId>arquillian-junit-standalone</artifactId>
+   			<version>1.1.5.Final</version>
+   			<scope>test</scope>
+		</dependency-->
+		
+		<!--dependency>
+   			<groupId>org.jboss.arquillian.graphene</groupId>
+   			<artifactId>arquillian-graphene</artifactId>
+   			<version>2.0.0.Alpha2</version>
+   			<type>pom</type>
+   			<scope>test</scope>
+		</dependency-->
+ 
+		<!-- Graphene WebDriver -->
+		<!--dependency>
+   			<groupId>org.jboss.arquillian.graphene</groupId>
+   			<artifactId>graphene-webdriver</artifactId>
+   			<version>2.0.0.Alpha3</version>
+   			<type>pom</type>
+   			<scope>test</scope>
+		</dependency-->	   					   
+    </dependencies>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>       
+        <browser>phantomjs</browser> <!-- PhantomJS will be our default browser if no profile is specified-->
+    </properties>
+    
+    <pluginRepositories>
+        <pluginRepository>
+            <id>SmartBearPluginRepository</id>
+            <url>http://www.soapui.org/repository/maven2/</url>
+        </pluginRepository>
+    </pluginRepositories>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.smartbear.soapui</groupId>
+                <artifactId>soapui-pro-maven-plugin</artifactId>
+                <version>4.6.1</version>
+                <executions>
+                    <execution>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                        <configuration>
+                            <projectFile>FeedbackApp-REST-soapui.xml</projectFile>
+                            <junitReport>true</junitReport>
+                            <outputFolder>results-output</outputFolder>
+                            <testFailIgnore>true</testFailIgnore>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+    
+    
+    
+    
+    
+</project>
