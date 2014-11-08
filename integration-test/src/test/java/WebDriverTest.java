@@ -1,20 +1,27 @@
+import static org.junit.Assert.assertTrue;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import org.jboss.arquillian.drone.api.annotation.Drone;
 import org.jboss.arquillian.graphene.spi.annotations.Page;
 import org.jboss.arquillian.junit.Arquillian;
+import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
 import org.openqa.selenium.WebDriver;
 
+
 @RunWith(Arquillian.class)
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class WebDriverTest {
 	
-	private List<Feedback> addedFeedbacks = new ArrayList<Feedback>();
+	private static List<Feedback> addedFeedbacks;
+	private static Feedback fb1;
+	private static Feedback fb2;
+	private static Feedback fb3;
  
     @Drone
     WebDriver driver;
@@ -34,6 +41,14 @@ public class WebDriverTest {
     @Page
     private AdminPageObject admin;
 
+    
+    @BeforeClass
+	public static void init() {
+    	addedFeedbacks = new ArrayList<Feedback>();
+    	fb1 = new Feedback("Web Driver 1", "web1@driver.com", "Feedback from WebDriver 1", true);
+    	fb2 = new Feedback("Web Driver 2", "web2@driver.com", "Feedback from WebDriver 2", false);
+    	fb3 = new Feedback("Web Driver 3", "web3@driver.com", "Feedback from WebDriver 3", true);
+	}
     
     @Test
     public void test01_MainPage_noLogin(){
@@ -79,47 +94,38 @@ public class WebDriverTest {
     }
     
     @Test
-    public void test04_1_SendFeedback_noLogin(){
-    	
-    	Feedback fb = new Feedback("Web Driver 1", "web1@driver.com", "Feedback from WebDriver 1", true);
-    	
+    public void test04_1_SendFeedback_noLogin(){   	    	
     	form.start();
-    	form.fillForm(fb.name, fb.email, fb.feedback, fb.isSpamAgreed);
-    	int id = result.verifyResult(fb.name, fb.email, fb.feedback);
+    	form.fillForm(fb1.name, fb1.email, fb1.feedback, fb1.isSpamAgreed);
+    	int id = result.verifyResult(fb1.name, fb1.email, fb1.feedback);
     	
     	if (id != 0) {
-    		fb.setId(id);
-    		addedFeedbacks.add(fb);
+    		fb1.setId(id);
+    		addedFeedbacks.add(fb1);
 		}
     }
     
     @Test
     public void test04_2_SendFeedback_noLogin(){
-    	
-    	Feedback fb = new Feedback("Web Driver 2", "web2@driver.com", "Feedback from WebDriver 2", true);
-    	
     	form.start();
-    	form.fillForm(fb.name, fb.email, fb.feedback, fb.isSpamAgreed);
-    	int id = result.verifyResult(fb.name, fb.email, fb.feedback);
+    	form.fillForm(fb2.name, fb2.email, fb2.feedback, fb2.isSpamAgreed);
+    	int id = result.verifyResult(fb2.name, fb2.email, fb2.feedback);
     	
     	if (id != 0) {
-    		fb.setId(id);
-    		addedFeedbacks.add(fb);
+    		fb2.setId(id);
+    		addedFeedbacks.add(fb2);
 		}
     }
     
     @Test
     public void test04_3_SendFeedback_noLogin(){
-    	
-    	Feedback fb = new Feedback("Web Driver 3", "web3@driver.com", "Feedback from WebDriver 3", true);
-    	
     	form.start();
-    	form.fillForm(fb.name, fb.email, fb.feedback, fb.isSpamAgreed);
-    	int id = result.verifyResult(fb.name, fb.email, fb.feedback);
+    	form.fillForm(fb3.name, fb3.email, fb3.feedback, fb3.isSpamAgreed);
+    	int id = result.verifyResult(fb3.name, fb3.email, fb3.feedback);
     	
     	if (id != 0) {
-    		fb.setId(id);
-    		addedFeedbacks.add(fb);
+    		fb3.setId(id);
+    		addedFeedbacks.add(fb3);
 		}
     }
     

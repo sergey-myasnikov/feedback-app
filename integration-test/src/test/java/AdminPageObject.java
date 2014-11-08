@@ -62,14 +62,17 @@ public class AdminPageObject {
 					driver.findElement(By.xpath("//td[@id='id' and contains(text(),'" + id + "')]/../td[@id='feedback']")).getText());
 			//check spam status
 			boolean isChecked = false;
-			if (driver
-					.findElement(By.xpath("//td[@id='id' and contains(text(),'" + id + "')]/../td[@id='spam']"))
-					.getAttribute("checked").equalsIgnoreCase("checked")) {
-				isChecked = true;
+			try {
+				if (driver
+						.findElement(By.xpath("//td[@id='id' and contains(text(),'" + id + "')]/../td[@id='spam']/input"))
+						.getAttribute("checked").equalsIgnoreCase("true")) {
+					isChecked = true;				
+				}		
+			} catch (Exception e) {
+				//ignore
 			}
 			assertEquals("Wrong spam status", addedFeedbacks.get(i).isSpamAgreed, isChecked);	
-		}
-    	
+		}	
     }
     
     /**
@@ -78,7 +81,6 @@ public class AdminPageObject {
      * @param addedFeedbacks A list of feedbacks which were removed
      */
     public void verifyFeedbacksNotPresent(List<Feedback> addedFeedbacks) {
-    	
     	for (int i = 0; i < addedFeedbacks.size(); i++) {
     		
 			long id = addedFeedbacks.get(i).id; //will search table elements by id
