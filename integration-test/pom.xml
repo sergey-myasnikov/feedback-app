@@ -8,25 +8,31 @@
     <name>Feedback App Test</name>
     <version>0.1.0</version>
 
-    <!-- dependencyManagement>
-        <dependencies>
-        	<dependency>
-            	<groupId>org.jboss.arquillian</groupId>
-            	<artifactId>arquillian-bom</artifactId>
-            	<version>1.1.5.Final</version>
-            	<type>pom</type>
-            	<scope>import</scope>
-        	</dependency>
-        	
-        	<dependency>
-                <groupId>org.jboss.arquillian.extension</groupId>
-                <artifactId>arquillian-drone-bom</artifactId>
-                <version>1.3.1.Final</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement-->
+	<dependencyManagement>
+	    <dependencies>
+	        <!--dependency>
+	            <groupId>org.jboss.arquillian</groupId>
+	            <artifactId>arquillian-bom</artifactId>
+	            <version>1.1.5.Final</version>
+	            <type>pom</type>
+	            <scope>import</scope>
+	        </dependency-->
+	        <!--dependency>
+	            <groupId>org.jboss.arquillian.extension</groupId>
+	            <artifactId>arquillian-drone-bom</artifactId>
+	            <version>1.3.1.Final</version>
+	            <type>pom</type>
+	            <scope>import</scope>
+	        </dependency-->
+	        <!--dependency>
+	            <groupId>org.jboss.arquillian.selenium</groupId>
+	            <artifactId>selenium-bom</artifactId>
+	            <version>2.43.1</version>
+	            <type>pom</type>
+	            <scope>import</scope>
+	        </dependency-->
+	    </dependencies>
+	</dependencyManagement>
 
     <dependencies>  	
     	<dependency>
@@ -67,34 +73,77 @@
         <browser>phantomjs</browser> <!-- PhantomJS will be our default browser if no profile is specified-->
     </properties>
     
-    <pluginRepositories>
-        <pluginRepository>
-            <id>SmartBearPluginRepository</id>
-            <url>http://www.soapui.org/repository/maven2/</url>
-        </pluginRepository>
-    </pluginRepositories>
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>com.smartbear.soapui</groupId>
-                <artifactId>soapui-pro-maven-plugin</artifactId>
-                <version>4.6.1</version>
-                <executions>
-                    <execution>
-                        <phase>integration-test</phase>
-                        <goals>
-                            <goal>test</goal>
-                        </goals>
-                        <configuration>
-                            <projectFile>FeedbackApp-REST-soapui.xml</projectFile>
-                            <junitReport>true</junitReport>
-                            <outputFolder>results-output</outputFolder>
-                            <testFailIgnore>true</testFailIgnore>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
+	<profiles>
+	    <profile>
+	       <id>firefox</id>
+	       <properties>
+	          <browser>firefox</browser>
+	       </properties>
+	    </profile>
+	    <profile>
+	       <id>chrome</id>
+	       <properties>
+	           <browser>chrome</browser>
+	       </properties>
+	    </profile>
+	    <profile>
+	       <id>iexplore</id>
+	       <properties>
+	           <browser>internetExplorer</browser>
+	       </properties>
+	    </profile>
+
+		<!-- Profile for SOAP UI tests -->
+	    <profile>
+    		<id>soapui</id>
+    		<build>
+    			<plugins>
+            		<plugin>
+                		<groupId>com.smartbear.soapui</groupId>
+                		<artifactId>soapui-pro-maven-plugin</artifactId>
+                		<version>4.6.1</version>
+                		<executions>
+                    		<execution>
+                        		<phase>test</phase>
+                        		<goals>
+                            		<goal>test</goal>
+                        		</goals>
+                        		<configuration>
+                            		<projectFile>FeedbackApp-REST-soapui.xml</projectFile>
+                            		<junitReport>true</junitReport>
+                            		<outputFolder>results-output</outputFolder>
+                            		<testFailIgnore>true</testFailIgnore>
+                        		</configuration>
+                    		</execution>
+              			</executions>
+            		</plugin>    		
+            		<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-surefire-plugin</artifactId>
+						<version>2.12.4</version>
+						<configuration>
+							<skipTests>true</skipTests>
+						</configuration>
+    				</plugin>		
+    			</plugins>
+    		</build>
+		</profile> 
+	</profiles>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>SmartBearPluginRepository</id>
+			<url>http://www.soapui.org/repository/maven2/</url>
+		</pluginRepository>
+	</pluginRepositories>
+	    	    
+	<build>
+	    <testResources>
+	        <testResource>
+	            <directory>src/test/resources</directory>
+	            <filtering>true</filtering>
+	        </testResource>
+	    </testResources>
     </build>
    
 </project>
