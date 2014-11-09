@@ -70,7 +70,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<browser>phantomjs</browser> <!-- PhantomJS will be our default browser if no profile is specified -->
+		<browser>htmlUnit</browser> <!-- htmlUnit will be the default browser -->
 	</properties>
 
 	<profiles>
