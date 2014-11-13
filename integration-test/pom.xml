@@ -124,13 +124,13 @@
 								<configuration>
 									<projectFile>FeedbackApp-REST-soapui.xml</projectFile>
 									<junitReport>true</junitReport>
-									<outputFolder>results-output</outputFolder>
+									<outputFolder>target/soapui-reports</outputFolder>
 									<testFailIgnore>true</testFailIgnore>
 									<host>${apphost}</host>				
 									<soapuiProperties>
 										<property>
 											<name>soapui.logroot</name>
-											<value>results-output/logs/</value>
+											<value>target/soapui-reports/logs/</value>
 										</property>
 									</soapuiProperties>
 								</configuration>
