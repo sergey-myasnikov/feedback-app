@@ -21,8 +21,8 @@ public class AdminPageObject {
     /**
      * Method to open admin page
      */
-    public void start() {
-    	driver.get("http://fbgd.herokuapp.com/admin");
+    public void start(String host) {
+    	driver.get("http://" + host + "/admin");
     }
     
     /**

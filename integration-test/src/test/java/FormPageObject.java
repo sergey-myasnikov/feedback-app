@@ -48,8 +48,8 @@ public class FormPageObject {
     /**
      * Method to open feedback form page
      */
-    public void start() {
-    	driver.get("http://fbgd.herokuapp.com/feedback");
+    public void start(String host) {
+    	driver.get("http://" + host + "/feedback");
     }
     
     /**

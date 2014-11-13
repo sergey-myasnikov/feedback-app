@@ -34,8 +34,8 @@ public class LoginPageObject {
     /**
      * Method to open login page.
      */
-    public void start() {
-    	driver.get("http://fbgd.herokuapp.com/login");
+    public void start(String host) {
+    	driver.get("http://" + host + "/login");
     }
     
     /**

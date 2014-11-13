@@ -29,8 +29,8 @@ public class MainPageObject {
     private WebElement header;
 
 
-    public void start() {
-    	driver.get("http://fbgd.herokuapp.com");
+    public void start(String host) {
+    	driver.get("http://" + host);
     }
     
     public void verifyMain() {
