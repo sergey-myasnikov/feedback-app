@@ -2,8 +2,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.jboss.arquillian.drone.api.annotation.Drone;
-import org.jboss.arquillian.graphene.spi.annotations.Page;
+//import org.jboss.arquillian.graphene.spi.annotations.Page;
+import org.jboss.arquillian.graphene.page.Page;
 import org.jboss.arquillian.junit.Arquillian;
+import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -23,7 +25,7 @@ public class WebDriverTest {
 	private static String host;
  
     @Drone
-    WebDriver driver;
+    static WebDriver driver;
 
     @Page
     private MainPageObject main;
@@ -55,8 +57,14 @@ public class WebDriverTest {
     	System.out.println("\n----> HOST: " + host + "\n");
 	}
     
+    @AfterClass
+    public static void teardown() {
+    	driver.quit();
+    }
+    
     @Test
     public void test01_MainPage_noLogin(){
+    	driver.manage().window().maximize(); //maximize before execution
     	main.start(host);
     	main.verifyMain();
     	main.verifyLoginButton();
