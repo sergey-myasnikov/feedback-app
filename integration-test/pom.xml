@@ -70,6 +70,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<apphost>fbgd.herokuapp.com</apphost>
 		<browser>htmlUnit</browser> <!-- htmlUnit will be the default browser -->
 	</properties>
 
@@ -124,7 +125,8 @@
 									<projectFile>FeedbackApp-REST-soapui.xml</projectFile>
 									<junitReport>true</junitReport>
 									<outputFolder>results-output</outputFolder>
-									<testFailIgnore>true</testFailIgnore>					
+									<testFailIgnore>true</testFailIgnore>
+									<host>${apphost}</host>				
 									<soapuiProperties>
 										<property>
 											<name>soapui.logroot</name>
