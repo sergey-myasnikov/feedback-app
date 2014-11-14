@@ -10,7 +10,7 @@
 
 	<dependencyManagement>
 	    <dependencies>
-	        <!--dependency>
+	        <!--dependency!!>
 	            <groupId>org.jboss.arquillian</groupId>
 	            <artifactId>arquillian-bom</artifactId>
 	            <version>1.1.5.Final</version>
