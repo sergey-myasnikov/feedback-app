@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+ 
+    <modelVersion>4.0.0</modelVersion>
+ 
+    <groupId>org.myasnikov</groupId>
+    <artifactId>feedback-app-test-cucumber</artifactId>
+    <name>Feedback App Test with Cucumber</name>
+    <version>0.1.0</version>
+ 
+    <properties>
+        <selenium.version>2.39.0</selenium.version>
+        <arquillian.version>1.1.5.Final</arquillian.version>
+        <drone.version>2.0.0.Alpha2</drone.version>
+        <cukes.version>1.5.10</cukes.version>
+    </properties>
+ 
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.jboss.arquillian</groupId>
+                <artifactId>arquillian-bom</artifactId>
+                <version>${arquillian.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss.arquillian.selenium</groupId>
+                <artifactId>selenium-bom</artifactId>
+                <version>${selenium.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss.arquillian.extension</groupId>
+                <artifactId>arquillian-drone-bom</artifactId>
+                <version>${drone.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+ 
+    <dependencies>
+ 
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.11</version>
+            <scope>test</scope>
+        </dependency>
+ 
+        <dependency>
+            <groupId>org.jboss.arquillian.extension</groupId>
+            <artifactId>arquillian-drone-webdriver-depchain</artifactId>
+            <type>pom</type>
+            <scope>test</scope>
+        </dependency>
+ 
+        <dependency>
+            <groupId>org.jboss.arquillian.junit</groupId>
+            <artifactId>arquillian-junit-standalone</artifactId>
+            <scope>test</scope>
+        </dependency>
+ 
+        <dependency>
+            <groupId>com.github.cukespace</groupId>
+            <artifactId>cukespace-core</artifactId>
+            <version>${cukes.version}</version>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.jboss.arquillian.junit</groupId>
+                    <artifactId>arquillian-junit-container</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <!-- Required since Cukes default depend on -container, we need to 
+            provide the spi without the impl -->
+        <dependency>
+            <groupId>org.jboss.arquillian.container</groupId>
+            <artifactId>arquillian-container-test-spi</artifactId>
+        </dependency>
+ 
+    </dependencies>
+ 
+</project>
