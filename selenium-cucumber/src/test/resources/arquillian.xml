@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<arquillian xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xmlns="http://jboss.org/schema/arquillian"
+            xsi:schemaLocation="http://jboss.org/schema/arquillian http://jboss.org/schema/arquillian/arquillian_1_0.xsd">
+ 
+  <extension qualifier="cucumber">
+    <property name="report">true</property>
+    <property name="report-directory">target/cucumber-report</property>
+  </extension>
+ 
+  <extension qualifier="webdriver">
+    <property name="browser">firefox</property>
+  </extension>
+ 
+</arquillian>
