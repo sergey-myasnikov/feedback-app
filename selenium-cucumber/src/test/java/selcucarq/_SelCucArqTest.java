@@ -1,8 +1,6 @@
 package selcucarq;
 
-import org.jboss.arquillian.drone.api.annotation.Drone;
 import org.junit.runner.RunWith;
-import org.openqa.selenium.WebDriver;
 import cucumber.api.CucumberOptions;
 import cucumber.runtime.arquillian.ArquillianCucumber;
 import cucumber.runtime.arquillian.api.Features;
