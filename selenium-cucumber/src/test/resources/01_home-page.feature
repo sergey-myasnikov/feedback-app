@@ -6,23 +6,23 @@ Feature: Open home page
   Scenario: Open home page http://fbgd.herokuapp.com
     When I open "http://fbgd.herokuapp.com"
     Then a browser URL should be "http://fbgd.herokuapp.com/main"
-    Then a browser title should contain "Home - Feedback App"
-    Then a page should contain header "Welcome to Feedback App"
+     And a browser title should be "Home - Feedback App"
+     And a page header should be "Welcome to Feedback App"
  
   Scenario: Open home page alias http://fbgd.herokuapp.com/home
     When I open "http://fbgd.herokuapp.com/home"
     Then a browser URL should be "http://fbgd.herokuapp.com/main"
-    Then a browser title should contain "Home - Feedback App"
-    Then a page should contain header "Welcome to Feedback App"
+     And a browser title should be "Home - Feedback App"
+     And a page header should be "Welcome to Feedback App"
     
   Scenario: Open home page alias http://fbgd.herokuapp.com/main
     When I open "http://fbgd.herokuapp.com/main"
     Then a browser URL should be "http://fbgd.herokuapp.com/main"
-    Then a browser title should contain "Home - Feedback App"
-    Then a page should contain header "Welcome to Feedback App"
+     And a browser title should be "Home - Feedback App"
+     And a page header should be "Welcome to Feedback App"
     
   Scenario: Open home page alias http://fbgd.herokuapp.com/index
     When I open "http://fbgd.herokuapp.com/index"
     Then a browser URL should be "http://fbgd.herokuapp.com/main"
-    Then a browser title should contain "Home - Feedback App"
-    Then a page should contain header "Welcome to Feedback App"
+     And a browser title should be "Home - Feedback App"
+     And a page header should be "Welcome to Feedback App"

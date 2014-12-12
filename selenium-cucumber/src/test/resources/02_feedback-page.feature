@@ -5,14 +5,14 @@ Feature: Navigate to Feedback page
 
   Scenario: Open feedback page http://fbgd.herokuapp.com/feedback
     When I open "http://fbgd.herokuapp.com/feedback"
-    Then a browser title should contain "Post a Feedback - Feedback App"
-    Then a page should contain header "Post a Feedback"
+    Then a browser title should be "Post a Feedback - Feedback App"
+    Then a page header should be "Post a Feedback"
      
   Scenario: Navigate to feedback page from main page
   	Given the page is open "http://fbgd.herokuapp.com"
     When I click "Post a Feedback" button
-    Then a browser title should contain "Post a Feedback - Feedback App"
-    Then a page should contain header "Post a Feedback"
+    Then a browser title should be "Post a Feedback - Feedback App"
+    Then a page header should be "Post a Feedback"
     
   Scenario: Post feedback
   	Given the page is open "http://fbgd.herokuapp.com/feedback"

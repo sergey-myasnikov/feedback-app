@@ -1,9 +1,11 @@
 package selcucarq;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
+
 import org.jboss.arquillian.drone.api.annotation.Drone;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -50,9 +52,9 @@ public class HomePageObject {
 	 * @param title
 	 * @throws Throwable
 	 */
-	@Then("^a browser title should contain \"([^\"]*)\"$")
-	public void browser_title_should_contain(String title) throws Throwable {
-		assertTrue(browser.getTitle().contains(title));
+	@Then("^a browser title should be \"([^\"]*)\"$")
+	public void browser_title_should_be(String title) throws Throwable {
+		assertEquals("Wrong page title", title, browser.getTitle());
 	}
 	
 	/**
@@ -62,7 +64,7 @@ public class HomePageObject {
 	 */
 	@Then("^a browser URL should be \"([^\"]*)\"$")
 	public void browser_url_should_be(String url) throws Throwable {
-		assertTrue(browser.getCurrentUrl().equalsIgnoreCase(url));
+		assertEquals("Wrong URL", url, browser.getCurrentUrl());
 	}
 
 	/**
@@ -70,9 +72,9 @@ public class HomePageObject {
 	 * @param header
 	 * @throws Throwable
 	 */
-	@Then("^a page should contain header \"([^\"]*)\"$")
-	public void page_should_contain(String header) throws Throwable {
-		assertTrue(browser.findElement(By.xpath("//h1")).getText().contains(header));
+	@Then("^a page header should be \"([^\"]*)\"$")
+	public void page_should_be(String header) throws Throwable {
+		assertEquals("Wrong page header", header, browser.findElement(By.xpath("//h1")).getText());
 	}
 
 }
