@@ -1,7 +1,6 @@
 package selcucarq;
 
 import org.jboss.arquillian.drone.api.annotation.Drone;
-import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 
