@@ -8,6 +8,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import ru.yandex.qatools.allure.annotations.Description;
+import ru.yandex.qatools.allure.annotations.Step;
+
 
 public class AdminPageObject {
 	
@@ -21,6 +24,7 @@ public class AdminPageObject {
     /**
      * Method to open admin page
      */
+    @Step("Open admin page http://{0}/admin")
     public void start(String host) {
     	driver.get("http://" + host + "/admin");
     }
@@ -28,6 +32,7 @@ public class AdminPageObject {
     /**
      * Verify feedback form page title and header
      */
+    @Step("Verify admin page title and header")
     public void verifyAdminPage() {
     	assertEquals("Wrong Page title", "All Feedbacks - Feedback App", driver.getTitle());
     	assertEquals("Wrong header", "All Feedbacks", header.getText());
@@ -38,6 +43,7 @@ public class AdminPageObject {
      * 
      * @param addedFeedbacks List of previously added feedbacks
      */
+    @Step
     public void verifyFeedbacks(List<Feedback> addedFeedbacks) {
     	
     	for (int i = 0; i < addedFeedbacks.size(); i++) {
@@ -80,6 +86,7 @@ public class AdminPageObject {
      * 
      * @param addedFeedbacks A list of feedbacks which were removed
      */
+    @Step
     public void verifyFeedbacksNotPresent(List<Feedback> addedFeedbacks) {
     	for (int i = 0; i < addedFeedbacks.size(); i++) {
     		
@@ -95,6 +102,7 @@ public class AdminPageObject {
      * 
      * @param id Feedback id
      */
+    @Step
     public void deleteFeedback(long id) {
     	
 		List<WebElement> feedbacks = driver.findElements(By.xpath("//td[@id='id' and contains(text(),'" + id + "')]"));
@@ -113,6 +121,7 @@ public class AdminPageObject {
      * 
      * @param addedFeedbacks A list of Feedbacks to delete
      */
+    @Step
     public void deleteFeedbacks(List<Feedback> addedFeedbacks) {
     	for (int i = 0; i < addedFeedbacks.size(); i++) { 		
 			long id = addedFeedbacks.get(i).id; //will delete table elements by id

@@ -6,6 +6,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import ru.yandex.qatools.allure.annotations.Step;
+
 
 public class LoginPageObject {
 	
@@ -34,6 +36,7 @@ public class LoginPageObject {
     /**
      * Method to open login page.
      */
+    @Step
     public void start(String host) {
     	driver.get("http://" + host + "/login");
     }
@@ -41,6 +44,7 @@ public class LoginPageObject {
     /**
      * Verify login page title and header.
      */
+    @Step
     public void verifyLoginPage() {
     	assertEquals("Wrong Page title", "Login - Feedback App", driver.getTitle());
     	assertEquals("Wrong header", "Please login", header.getText());
@@ -52,6 +56,7 @@ public class LoginPageObject {
      * @param username
      * @param password
      */
+    @Step
     public void fillForm(String username, String password) {   	
     	usernameField.sendKeys(username);
     	passwordField.sendKeys(password);
@@ -62,6 +67,7 @@ public class LoginPageObject {
      * Verify the presence of login error
      * 
      */
+    @Step
     public void verifyError() {   	
     	try {
     		assertTrue("Name error is not present", error.isDisplayed());
@@ -74,6 +80,7 @@ public class LoginPageObject {
      * Verify the presence of logout message
      * 
      */
+    @Step
     public void verifyLogoutMessage() {   	
     	try {
     		assertTrue("Name error is not present", logoutMessage.isDisplayed());

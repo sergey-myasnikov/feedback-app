@@ -13,9 +13,15 @@ import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
 import org.openqa.selenium.WebDriver;
 
+import ru.yandex.qatools.allure.annotations.Description;
+import ru.yandex.qatools.allure.annotations.Features;
+import ru.yandex.qatools.allure.annotations.Severity;
+import ru.yandex.qatools.allure.annotations.Stories;
+
 
 @RunWith(Arquillian.class)
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
+@Description("Smoke test of Feedback application")
 public class WebDriverTest {
 	
 	private static List<Feedback> addedFeedbacks;
@@ -63,7 +69,10 @@ public class WebDriverTest {
     }
     
     @Test
-    public void test01_MainPage_noLogin(){
+    @Features("Main page")
+    @Stories("As a user open main page")
+    @Description("As a user open main page and verify page URL, title, header and the presence of 'Login' button")
+    public void test01_1_MainPage_noLogin(){
     	driver.manage().window().maximize(); //maximize before execution
     	main.start(host);
     	main.verifyMain();
@@ -71,7 +80,38 @@ public class WebDriverTest {
     }
     
     @Test
-    public void test02_NavigationToFeedbackForm_noLogin(){
+    @Features("Main page")
+    @Stories("As a user open main page aliases")
+    @Description("As a user open main page aliases and verify page URL, title, header and the presence of 'Login' button for each")
+    public void test01_2_MainPage_noLogin(){
+    	main.start_home(host);
+    	main.verifyMain();
+    	main.verifyLoginButton();
+    	
+    	main.start_main(host);
+    	main.verifyMain();
+    	main.verifyLoginButton();
+    	
+    	main.start_index(host);
+    	main.verifyMain();
+    	main.verifyLoginButton();
+    }
+  
+    @Test
+    @Features("Feedback form")
+    @Stories("As a user open Feedback form by URL and verify title, header and the presence of 'Login' button")
+    @Description("As a user open Feedback form by URL and verify title, header and the presence of 'Login' button")
+    public void test02_1_NavigationToFeedbackForm_noLogin(){
+    	form.start(host);
+    	main.verifyLoginButton();
+    	form.verifyForm();
+    }
+    
+    @Test
+    @Features("Feedback form")
+    @Stories("As a user open Feedback form via 'Post a Feedback' button and verify title, header and the presence of 'Login' button")
+    @Description("As a user open Feedback form via 'Post a Feedback' button and verify title, header and the presence of 'Login' button")
+    public void test02_2_NavigationToFeedbackForm_noLogin(){
     	main.start(host);
     	main.clickPostFeedback();
     	main.verifyLoginButton();
@@ -79,6 +119,7 @@ public class WebDriverTest {
     }
     
     @Test
+    @Features("Feedback form")
     public void test03_NameValidation(){
     	form.start(host);
     	form.fillForm("", "web@driver.com", "Feedback from WebDriver", true);
@@ -86,6 +127,7 @@ public class WebDriverTest {
     }
     
     @Test
+    @Features("Feedback form")
     public void test03_EmailValidation(){
     	form.start(host);
     	form.fillForm("Web Driver", "", "Feedback from WebDriver", true);
@@ -93,6 +135,7 @@ public class WebDriverTest {
     }
     
     @Test
+    @Features("Feedback form")
     public void test03_FeedbackValidation(){
     	form.start(host);
     	form.fillForm("Web Driver", "web@driver.com", "", true);
@@ -100,6 +143,7 @@ public class WebDriverTest {
     }
     
     @Test
+    @Features("Feedback form")
     public void test03_AllValidations(){
     	form.start(host);
     	form.fillForm("", "", "", false);
@@ -107,6 +151,7 @@ public class WebDriverTest {
     }
     
     @Test
+    @Features("Feedback form")
     public void test04_1_SendFeedback_noLogin(){   	    	
     	form.start(host);
     	form.fillForm(fb1.name, fb1.email, fb1.feedback, fb1.isSpamAgreed);
@@ -119,6 +164,7 @@ public class WebDriverTest {
     }
     
     @Test
+    @Features("Feedback form")
     public void test04_2_SendFeedback_noLogin(){
     	form.start(host);
     	form.fillForm(fb2.name, fb2.email, fb2.feedback, fb2.isSpamAgreed);
@@ -131,6 +177,7 @@ public class WebDriverTest {
     }
     
     @Test
+    @Features("Feedback form")
     public void test04_3_SendFeedback_noLogin(){
     	form.start(host);
     	form.fillForm(fb3.name, fb3.email, fb3.feedback, fb3.isSpamAgreed);

@@ -1,8 +1,11 @@
 import static org.junit.Assert.*;
+
 import org.jboss.arquillian.drone.api.annotation.Drone;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+
+import ru.yandex.qatools.allure.annotations.Step;
 
 
 public class ResultPageObject {
@@ -38,6 +41,7 @@ public class ResultPageObject {
      * @param feedback Feedback text
      * @return id of a new feedback
      */
+    @Step
     public int verifyResult( String name, String email, String feedback) {
     	assertEquals("Wrong Page title", "Success - Feedback App", driver.getTitle());
     	assertEquals("Wrong header", "Feedback successfully sent!", header.getText());
