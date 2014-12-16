@@ -2,7 +2,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.jboss.arquillian.drone.api.annotation.Drone;
-//import org.jboss.arquillian.graphene.spi.annotations.Page;
 import org.jboss.arquillian.graphene.page.Page;
 import org.jboss.arquillian.junit.Arquillian;
 import org.junit.AfterClass;
@@ -15,7 +14,6 @@ import org.openqa.selenium.WebDriver;
 
 import ru.yandex.qatools.allure.annotations.Description;
 import ru.yandex.qatools.allure.annotations.Features;
-import ru.yandex.qatools.allure.annotations.Severity;
 import ru.yandex.qatools.allure.annotations.Stories;
 
 
