@@ -3,19 +3,22 @@ feedback-app
 
 Feedback App is a simple web application designed to try various automated testing tools.
 
-Application description
+## Application description
 
 Consists of 5 pages:
 
-Welcome page (also has aliases)
-Feedback form
-Confirmation page
-Admin page with a list of Feedbacks
-Login page
+Page  | URL
+------------- | -------------
+Welcome page  | /
+Feedback form | 
+Confirmation page |
+Admin page with a list of Feedbacks |
+Login page |
 
-API handles the following requests:
+## API description:
 
 
+## How to use?
 
 Application deployed to Heroku: http://fbgd.herokuapp.com
 
