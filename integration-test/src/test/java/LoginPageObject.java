@@ -36,7 +36,7 @@ public class LoginPageObject {
     /**
      * Method to open login page.
      */
-    @Step
+    @Step("Open login page http://{0}/login")
     public void start(String host) {
     	driver.get("http://" + host + "/login");
     }
@@ -44,7 +44,7 @@ public class LoginPageObject {
     /**
      * Verify login page title and header.
      */
-    @Step
+    @Step("Verify login page title and header")
     public void verifyLoginPage() {
     	assertEquals("Wrong Page title", "Login - Feedback App", driver.getTitle());
     	assertEquals("Wrong header", "Please login", header.getText());
@@ -56,7 +56,7 @@ public class LoginPageObject {
      * @param username
      * @param password
      */
-    @Step
+    @Step("Submit login with username={0} and password={1}")
     public void fillForm(String username, String password) {   	
     	usernameField.sendKeys(username);
     	passwordField.sendKeys(password);
@@ -67,7 +67,7 @@ public class LoginPageObject {
      * Verify the presence of login error
      * 
      */
-    @Step
+    @Step("Verify login error")
     public void verifyError() {   	
     	try {
     		assertTrue("Name error is not present", error.isDisplayed());
@@ -80,7 +80,7 @@ public class LoginPageObject {
      * Verify the presence of logout message
      * 
      */
-    @Step
+    @Step("Verify logout message")
     public void verifyLogoutMessage() {   	
     	try {
     		assertTrue("Name error is not present", logoutMessage.isDisplayed());

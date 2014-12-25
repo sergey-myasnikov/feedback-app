@@ -41,7 +41,7 @@ public class ResultPageObject {
      * @param feedback Feedback text
      * @return id of a new feedback
      */
-    @Step
+    @Step("Verify result page title, header, user name={0}, e-mail={1} and feedback={2}")
     public int verifyResult( String name, String email, String feedback) {
     	assertEquals("Wrong Page title", "Success - Feedback App", driver.getTitle());
     	assertEquals("Wrong header", "Feedback successfully sent!", header.getText());

@@ -50,7 +50,7 @@ public class FormPageObject {
     /**
      * Method to open feedback form page
      */
-    @Step
+    @Step("Open feedback form http://{0}/feedback")
     public void start(String host) {
     	driver.get("http://" + host + "/feedback");
     }
@@ -58,7 +58,7 @@ public class FormPageObject {
     /**
      * Verify feedback form page title and header
      */
-    @Step
+    @Step("Verify feedback form title and header")
     public void verifyForm() {
     	assertEquals("Wrong Page title", "Post a Feedback - Feedback App", driver.getTitle());
     	assertEquals("Wrong header", "Post a Feedback", header.getText());
@@ -73,7 +73,7 @@ public class FormPageObject {
      * @param Feedback Feedback text
      * @param isSpamAgreed Spam checkbox state
      */
-    @Step
+    @Step("Submit feedback: name={0}, e-mail={1}, feedback={2}, spam status={3}")
     public void fillForm(String name, String email, String Feedback, boolean isSpamAgreed) {
     	
     	nameField.sendKeys(name);
@@ -90,7 +90,7 @@ public class FormPageObject {
      * 
      * @param errors An array of error codes: 1 for name error, 2 for e-mail error and 3 for feedback error
      */
-    @Step
+    @Step("Verify errors by type(s) {0}")
     public void verifyError(int[] errors) {   	
     	try {
         	for (int i = 0; i < errors.length; i++) {

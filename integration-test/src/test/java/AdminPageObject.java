@@ -8,7 +8,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import ru.yandex.qatools.allure.annotations.Description;
 import ru.yandex.qatools.allure.annotations.Step;
 
 
@@ -43,7 +42,7 @@ public class AdminPageObject {
      * 
      * @param addedFeedbacks List of previously added feedbacks
      */
-    @Step
+    @Step("Verify the presence of previously added Feedbacks")
     public void verifyFeedbacks(List<Feedback> addedFeedbacks) {
     	
     	for (int i = 0; i < addedFeedbacks.size(); i++) {
@@ -81,12 +80,13 @@ public class AdminPageObject {
 		}	
     }
     
+    
     /**
      * Verify feedbacks are not present
      * 
      * @param addedFeedbacks A list of feedbacks which were removed
      */
-    @Step
+    @Step("Verify Feedbacks are not present")
     public void verifyFeedbacksNotPresent(List<Feedback> addedFeedbacks) {
     	for (int i = 0; i < addedFeedbacks.size(); i++) {
     		
@@ -102,7 +102,7 @@ public class AdminPageObject {
      * 
      * @param id Feedback id
      */
-    @Step
+    @Step("Delete Feedback by ID {0}")
     public void deleteFeedback(long id) {
     	
 		List<WebElement> feedbacks = driver.findElements(By.xpath("//td[@id='id' and contains(text(),'" + id + "')]"));
@@ -112,8 +112,7 @@ public class AdminPageObject {
 		WebElement deleteButton = driver
 				.findElement(By.xpath("//td[@id='id' and contains(text(),'" + id + "')]/../td[@id='delete']//input[@value='Delete']"));
 		deleteButton.click();
-		driver.switchTo().alert().accept();
-		
+		driver.switchTo().alert().accept();	
     }
     
     /**
@@ -121,7 +120,7 @@ public class AdminPageObject {
      * 
      * @param addedFeedbacks A list of Feedbacks to delete
      */
-    @Step
+    @Step("Delete Feedbacks")
     public void deleteFeedbacks(List<Feedback> addedFeedbacks) {
     	for (int i = 0; i < addedFeedbacks.size(); i++) { 		
 			long id = addedFeedbacks.get(i).id; //will delete table elements by id
