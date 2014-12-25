@@ -1,19 +1,19 @@
 feedback-app
 ============
 
-Feedback App is a simple web application designed to try various automated testing tools.
+Feedback App is a simple web application designed to try out various automated testing stuff like Selenium frameworks and API testing tools.
 
 ## Application description
 
 Consists of 5 pages:
 
-Page  | URL
+Page | URL
 ------------- | -------------
-Welcome page  | /
-Feedback form | 
-Confirmation page |
-Admin page with a list of Feedbacks |
-Login page |
+Welcome page | /, /main, /index, /home
+Feedback form | /feedback
+Confirmation page | redirection from Feedback form
+Admin page with a list of Feedbacks | /admin
+Login page | /login
 
 ## API description:
 
