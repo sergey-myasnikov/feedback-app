@@ -15,13 +15,17 @@ Confirmation page | redirection from Feedback form
 Admin page with a list of Feedbacks | /admin
 Login page | /login
 
+Since it is a testing "sandbox" all Feedbacks are stored in memory (no DB layer) and will disappear after application restart.
+
 ## API description:
 
 
 ## How to use?
 
-Application deployed to Heroku: http://fbgd.herokuapp.com
+To run application locally use Maven command ```mvn spring-boot:run```
 
-To run application locally use mvn spring-boot:run
+Application also deployed to Heroku: http://fbgd.herokuapp.com
+
+
 
 
