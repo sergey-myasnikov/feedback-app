@@ -112,6 +112,12 @@ public class AdminPageObject {
 		WebElement deleteButton = driver
 				.findElement(By.xpath("//td[@id='id' and contains(text(),'" + id + "')]/../td[@id='delete']//input[@value='Delete']"));
 		deleteButton.click();
+		try {
+			Thread.sleep(500);
+		} catch (InterruptedException e) {
+			// TODO Wait for alert instead of sleeping!
+			e.printStackTrace();
+		}
 		driver.switchTo().alert().accept();	
     }
     

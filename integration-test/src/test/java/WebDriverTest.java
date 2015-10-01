@@ -75,7 +75,7 @@ public class WebDriverTest {
     public void test01_1_MainPage_noLogin(){
     	driver.manage().window().maximize(); //maximize before execution
     	main.start(host);
-    	main.verifyMain();
+    	main.verifyMain(host);
     	main.verifyLoginButton();
     }
     
@@ -86,15 +86,15 @@ public class WebDriverTest {
     @Description("As a user open main page aliases and verify page URL, title, header and the presence of 'Login' button for each")
     public void test01_2_MainPage_noLogin(){
     	main.start_home(host);
-    	main.verifyMain();
+    	main.verifyMain(host);
     	main.verifyLoginButton();
     	
     	main.start_main(host);
-    	main.verifyMain();
+    	main.verifyMain(host);
     	main.verifyLoginButton();
     	
     	main.start_index(host);
-    	main.verifyMain();
+    	main.verifyMain(host);
     	main.verifyLoginButton();
     }
   

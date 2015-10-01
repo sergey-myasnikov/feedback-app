@@ -52,8 +52,8 @@ public class MainPageObject {
     }
     
     @Step("Verify home page URL, title and header")
-    public void verifyMain() {
-    	assertEquals("Wrong Page URL", "http://fbgd.herokuapp.com/main", driver.getCurrentUrl());
+    public void verifyMain(String appHost) {
+    	assertEquals("Wrong Page URL", "http://" + appHost + "/main", driver.getCurrentUrl());
     	assertEquals("Wrong Page title", "Home - Feedback App", driver.getTitle());
     	assertEquals("Wrong header", "Welcome to Feedback App", header.getText());
     }
