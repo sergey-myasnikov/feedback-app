@@ -1,7 +1,7 @@
 feedback-app
 ============
 
-Feedback App is a simple web application designed to try out various automated testing stuff like Selenium frameworks and API testing tools. Thus it DOES contains several intentional bugs.
+Feedback App is a simple web application designed to try out various automated testing stuff like Selenium frameworks and API testing tools. Thus it DOES contain several intentional bugs.
 
 ## Front-end description
 
